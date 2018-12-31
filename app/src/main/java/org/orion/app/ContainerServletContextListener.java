@@ -1,6 +1,7 @@
 package org.orion.app;
 
 import org.hibernate.SessionFactory;
+import org.orion.app.component.implementation.SHA256PasswordEncoder;
 import org.orion.app.entity.Account;
 import org.orion.app.persistance.configuration.HibernateMySqlConfiguration;
 import org.orion.app.repository.implementation.AccountRepository;
@@ -23,5 +24,6 @@ public class ContainerServletContextListener implements ServletContextListener {
         AccountRepository accountRepository = new AccountRepository(sessionFactory);
         servletContext.setAttribute("sessionFactory", sessionFactory);
         servletContext.setAttribute("accountRepository", accountRepository);
+        servletContext.setAttribute("passwordEncoder", new SHA256PasswordEncoder());
     }
 }

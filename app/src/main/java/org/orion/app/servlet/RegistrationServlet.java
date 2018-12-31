@@ -1,5 +1,7 @@
 package org.orion.app.servlet;
 
+import org.orion.app.component.contract.IPasswordEncoder;
+import org.orion.app.component.implementation.SHA256PasswordEncoder;
 import org.orion.app.entity.Account;
 import org.orion.app.model.RegistrationModel;
 import org.orion.app.repository.contract.IAccountRepository;
@@ -31,6 +33,9 @@ public class RegistrationServlet extends HttpServlet {
         //resp.getOutputStream().println("phase d'enregistrement");
         //Recuperation de l'objet Account Repository depuis le servletContext
         IAccountRepository accountRepository = (AccountRepository) getServletContext().getAttribute("accountRepository");
+
+        //Recuperation de l'objet passwordEncoder depuis le serveltContext
+        IPasswordEncoder passwordEncoder = (SHA256PasswordEncoder) getServletContext().getAttribute("passwordEncoder");
         //Recupération des parametres de la requete
         RegistrationModel model = new RegistrationModel();
         model.setName(req.getParameter("name"));
@@ -97,7 +102,7 @@ public class RegistrationServlet extends HttpServlet {
             account.setSurname(model.getSurname());
             account.setEmail(model.getEmail());
             account.setPhone(model.getPhone());
-            account.setPasswordHash(model.getPassword());
+            account.setPasswordHash(passwordEncoder.encodePassword(model.getPasswordMatch()));
             account.setRedistration(new Date());
             //Persistance de l'objet Account
             accountRepository.save(account);
