@@ -25,6 +25,7 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //Redirection vers la page D'acceuil
         req.getRequestDispatcher("/WEB-INF/account/registration.jsp").forward(req, resp);
     }
 
@@ -75,7 +76,9 @@ public class RegistrationServlet extends HttpServlet {
             errors.put("email", "Votre email ne doit pas etre vide");
         } else if (!model.getEmail().matches("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z]{2,6}")) {
             errors.put("email", "Votre email n'a pqs um format valide");
-        }
+        } else if (!(accountRepository.findByEmail(model.getEmail()) == null))
+            errors.put("email", "Adresse email déja utilisé");
+
         if (model.getPassword() == null || model.getPassword().trim().length() == 0)
             errors.put("password", "Votre mot de password ne peut etre vide");
         else if (model.getPassword().trim().length() < 6)

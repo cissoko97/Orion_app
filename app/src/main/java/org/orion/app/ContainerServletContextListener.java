@@ -22,7 +22,7 @@ public class ContainerServletContextListener implements ServletContextListener {
         configuration.buildSessionFactory();
         SessionFactory sessionFactory = configuration.sessionFactory();
         AccountRepository accountRepository = new AccountRepository(sessionFactory);
-        servletContext.setAttribute("sessionFactory", sessionFactory);
+        //servletContext.setAttribute("sessionFactory", sessionFactory);
         servletContext.setAttribute("accountRepository", accountRepository);
         servletContext.setAttribute("passwordEncoder", new SHA256PasswordEncoder());
     }
