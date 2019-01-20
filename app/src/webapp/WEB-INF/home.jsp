@@ -1,3 +1,5 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -11,7 +13,16 @@
 <body>
 <div class="container-fluid no-gutters p-0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a href="#" class="navbar-brand">ORION</a>
+        <a class="navbar-brand" href="#">ORION</a>
+        <div style="flex: 1 1 auto;"></div>
+        <div class="text-light">
+            <c:if test="${ !empty sessionScope.account}">
+                ${sessionScope.account.name} ${sessionScope.account.surname}
+                <form class=" ml-3 d-inline" method="post" action="/authentication/logout">
+                    <button class="btn btn-danger">Se Déconnecter</button>
+                </form>
+            </c:if>
+        </div>
     </nav>
 </div>
 <script src="/dist/js/jquery-3.3.1.min.js"></script>

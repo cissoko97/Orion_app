@@ -16,14 +16,12 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/home")
 public class HomeServlet extends HttpServlet {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/home.jsp").forward(req, resp);
-        String id = req.getParameter("accountId");
-        IAccountRepository accountRepository = (AccountRepository) getServletContext().getAttribute("accountRepository");
-        Account account = accountRepository.findById(Integer.valueOf(id));
-
-        logger.info("User found "+account.getName()+" "+account.getSurname());
+        //Account account = (Account) req.getSession().getAttribute("account");
+        //resp.getOutputStream().print("User found " + account.getName() + " " + account.getSurname());
     }
 
     @Override
