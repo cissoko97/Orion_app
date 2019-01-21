@@ -1,14 +1,11 @@
 package org.orion.app.servlet;
 
 import org.orion.app.component.contract.IPasswordEncoder;
-import org.orion.app.component.implementation.SHA256PasswordEncoder;
 import org.orion.app.entity.Account;
 import org.orion.app.model.RegistrationModel;
 import org.orion.app.repository.contract.IAccountRepository;
-import org.orion.app.repository.implementation.AccountRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,10 +30,10 @@ public class RegistrationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //resp.getOutputStream().println("phase d'enregistrement");
         //Recuperation de l'objet Account Repository depuis le servletContext
-        IAccountRepository accountRepository = (AccountRepository) getServletContext().getAttribute("accountRepository");
+        IAccountRepository accountRepository = (IAccountRepository) getServletContext().getAttribute("accountRepository");
 
         //Recuperation de l'objet passwordEncoder depuis le serveltContext
-        IPasswordEncoder passwordEncoder = (SHA256PasswordEncoder) getServletContext().getAttribute("passwordEncoder");
+        IPasswordEncoder passwordEncoder = (IPasswordEncoder) getServletContext().getAttribute("passwordEncoder");
         //Recupération des parametres de la requete
         RegistrationModel model = new RegistrationModel();
         model.setName(req.getParameter("name"));
