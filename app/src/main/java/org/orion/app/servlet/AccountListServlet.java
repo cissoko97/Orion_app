@@ -2,7 +2,6 @@ package org.orion.app.servlet;
 
 import org.orion.app.entity.Account;
 import org.orion.app.repository.contract.IAccountRepository;
-import org.orion.app.repository.implementation.AccountRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +17,7 @@ public class AccountListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        IAccountRepository accountRepository = (AccountRepository) getServletContext().getAttribute("accountRepository");
+        IAccountRepository accountRepository = (IAccountRepository) getServletContext().getAttribute("accountRepository");
 
         Set<Account> accounts = accountRepository.findAll();
         req.setAttribute("accounts", accounts);
