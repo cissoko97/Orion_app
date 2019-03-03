@@ -14,7 +14,7 @@
         <h3 class="col font-weight-bold">Connexion</h3>
         <hr>
         <div class="col-12 form-group">
-            <label for="email">Adresse Ã©lectronique</label>
+            <label for="email">Adresse électronique</label>
             <input id="email" name="email" value="${model.email}" class="form-control">
             <span class="text-danger font-italic">${errors.email}</span>
         </div>

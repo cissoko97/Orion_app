@@ -18,7 +18,6 @@ public class AccountListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         IAccountRepository accountRepository = (IAccountRepository) getServletContext().getAttribute("accountRepository");
-
         Set<Account> accounts = accountRepository.findAll();
         req.setAttribute("accounts", accounts);
         getServletContext()

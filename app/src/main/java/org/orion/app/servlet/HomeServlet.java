@@ -20,12 +20,5 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/home.jsp").forward(req, resp);
-        //Account account = (Account) req.getSession().getAttribute("account");
-        //resp.getOutputStream().print("User found " + account.getName() + " " + account.getSurname());
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
     }
 }

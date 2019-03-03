@@ -28,7 +28,6 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //resp.getOutputStream().println("phase d'enregistrement");
         //Recuperation de l'objet Account Repository depuis le servletContext
         IAccountRepository accountRepository = (IAccountRepository) getServletContext().getAttribute("accountRepository");
 

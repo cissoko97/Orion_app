@@ -1,6 +1,6 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -19,7 +19,7 @@
             <c:if test="${ !empty sessionScope.account}">
                 ${sessionScope.account.name} ${sessionScope.account.surname}
                 <form class=" ml-3 d-inline" method="post" action="/authentication/logout">
-                    <button class="btn btn-danger">Se DÃ©connecter</button>
+                    <button class="btn btn-danger">Se Déconnecter</button>
                 </form>
             </c:if>
         </div>

@@ -20,8 +20,8 @@
     <tr class="font-weight-bold">
         <td>Id</td>
         <td>Nom</td>
-        <td>PrÃ©nom</td>
-        <td>Adresse Ã©lectronique</td>
+        <td>Prénom</td>
+        <td>Adresse électronique</td>
         <td>Telephone</td>
     </tr>
     </thead>
